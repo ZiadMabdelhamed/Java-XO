@@ -86,7 +86,7 @@ public class AiHard extends GamePlay implements ModulesInterface{
                    Random rand = new Random();
                     randomElement = list.get(rand.nextInt(list.size()));
                }
-               else
+               else if(count ==9)
                {
                     randomElement = "12";
                }
