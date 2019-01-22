@@ -1,0 +1,64 @@
+.tf {
+    -fx-font-family: "Quicksand";
+   -fx-font-size: 18;
+   
+   -fx-text-box-border: transparent;
+
+   -fx-border-width: 2;
+   -fx-border-radius: 1;
+   -fx-border: gone;
+   -fx-background-color: #19b5fe;
+   -fx-text-fill: #ffffff;
+}
+.tf:focused {
+    -fx-focus-color: transparent;
+}
+
+.pane_style_left{
+    -fx-background-color :  #14bdac;
+    -fx-border-color:#0da192; 
+        
+    -fx-border-width: 0 0 0 5;
+    -fx-border-style:  solid solid solid;
+}
+
+.pane_style_all_except_right{
+    -fx-background-color :  #14bdac;
+    -fx-border-color:#0da192; 
+        
+    -fx-border-width: 5 0 5 5;
+    -fx-border-style:  solid solid solid;
+}
+
+.pane_style_right{
+    -fx-background-color :  #14bdac;
+    -fx-border-color:#0da192; 
+        
+    -fx-border-width: 0 5 0 0;
+    -fx-border-style:  solid solid solid;
+}
+
+.pane_style_all_except_left{
+    -fx-background-color :  #14bdac;
+    -fx-border-color:#0da192; 
+        
+    -fx-border-width: 5 5 5 0;
+    -fx-border-style:  solid solid solid;
+}
+
+.pane_style_all{
+    -fx-background-color :  #14bdac;
+    -fx-border-color:#0da192; 
+        
+    -fx-border-width: 5 0 5 0;
+    -fx-border-style:  solid solid solid;
+}
+.pane_style_background{
+    -fx-background-color :  #14bdac;
+    
+}
+
+.win_pane{
+    -fx-background-color: rgba(62, 160, 204, 0.4);    
+    -fx-background-insets: 50;
+}
