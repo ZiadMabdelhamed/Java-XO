@@ -100,7 +100,7 @@ public class NetworkgameHandler extends Thread{
                                         {
                                             //printAll(str[2]);
                                             System.out.println("Sender : "+str[1]+" resever :"+str[2] );
-                                            printAll(str[1]);
+                                            printAll_refuse(str[1]);
                                         }
 					
 					
@@ -186,7 +186,8 @@ public class NetworkgameHandler extends Thread{
                             // System.err.println(" soc ip "+soc.getRemoteSocketAddress().toString());
                                 if( ip.equals(ips[1]))
                                 {
-                                    str[0] = "create_socket";                                    
+                                    str[0] = "create_socket";
+                                    str[3] ="turn";
                                     ch.objectOutputStream.writeObject(str);
                                     
                                     soc_p1 = ch.soc;                                    
@@ -195,6 +196,7 @@ public class NetworkgameHandler extends Thread{
                                 if( ip.equals(ips[2]))
                                 {
                                     str[0] = "create_socket";                                    
+                                    str[3] ="notturn";
                                     ch.objectOutputStream.writeObject(str);
                                     
                                     soc_p2 = ch.soc;                                    

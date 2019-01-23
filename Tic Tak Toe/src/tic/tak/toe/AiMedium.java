@@ -5,6 +5,8 @@
  */
 package tic.tak.toe;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -23,11 +25,7 @@ public class AiMedium extends GamePlay implements ModulesInterface {
     {
         
         int move = 0;
-                
-	//Set types of positions (used for prioritizing move choice)
-        int[] corners = new int[] {0, 2, 6, 8};
-	int[] sides = new int[] {1, 3, 5, 7};
-		
+      
          this.board=board;
         String bestmove=null;
         
@@ -49,58 +47,36 @@ public class AiMedium extends GamePlay implements ModulesInterface {
             
             }
         }
-        
-          for(int i=0;i<board.length;i++)
-        {
-            if(board[i]==null)
-            {
-            
-                // if the player can win
-                if(isWinnerWith("x",Integer.toString(i)))
-                {
-                    bestmove= Integer.toString(i);
-                    if(can_put_here(bestmove)==true){
-                    set_player2_pos(bestmove);
-                   }
-                    return bestmove;
-                }
-                
-            
-            }
-        }
+
+
+                List<String> list = new ArrayList<>();
           
-          move = randomFromArray(corners); //Pick a random corner
-		if(move != -1){
-                    bestmove=Integer.toString(move);
-                         if(can_put_here(bestmove)==true){
-                        set_player2_pos(bestmove);
-                         
-			return bestmove;
-			}
-                }
-		//Test if the center is open (in general better than sides)
-		if(null==board[4]){
-			move = 4; //I know I could just return 4, but I'd rather use move
-                        bestmove=Integer.toString(move);
-                         if(can_put_here(bestmove)==true){
-                        set_player2_pos(bestmove);
-			return bestmove;
-                    }
-                }
-		//Test if any sides are open (last option)
-		move = randomFromArray(sides); //Pick a random side
-		if(move != -1){
-                    bestmove=Integer.toString(move);
-                    
-                    if(can_put_here(bestmove)==true){
-                        set_player2_pos(bestmove);
-                         
-			return bestmove;
-			}
-                }
-		//There's nothing open...we should never reach this point (World should have realized
-		//this earlier)
-		return "12";
+                count =0;
+               for(int i=0;i<board.length;i++)
+               {
+                   if(board[i]==null)
+                   {
+                       count++;
+                       list.add(Integer.toString(i));
+                   }
+               }
+
+               
+               if(count >0)
+               {
+                   Random rand = new Random();
+                    randomElement = list.get(rand.nextInt(list.size()));
+               }
+               else if(count==9)
+               {
+                    randomElement = "12";
+               }
+
+               bestmove= randomElement;
+               if(can_put_here(bestmove)==true){
+                set_player2_pos(bestmove);
+               }
+               return bestmove;
 	}
         
         
@@ -134,50 +110,7 @@ public class AiMedium extends GamePlay implements ModulesInterface {
         }
         
         
-        
-        private int randomFromArray(int[] list)
-        {        // System.out.println("rrrrr");
-		int[] okMoves = new int[4]; //List of moves that are not already filled
-		int move = -1;
-		Random choose = new Random(); //Create a new random number generator
-		
-		//Run through each member of the list and test it to see if it is usable.
-		//If it is, put it into the list of ok moves. If it is not, put -1 in its place (NOK)
-		for(int i=0; i<4; i++)
-                {
-			//Test if it's free
-			if(isFree(list[i]))
-				//It is, put it in the ok list
-                        { //  System.out.println(board[i]+"ggggg"+list[i]);
-				okMoves[i] = list[i];
-                        }
-			//It is not, put -1 in its place
-			else
-				okMoves[i] = -1;
-		}
-		
-		//Brute force check to make sure there is at least one valid value
-		if(okMoves[0] == -1 && okMoves[1] == -1 && okMoves[2] == -1 && okMoves[3] == -1){
-			return -1; //If there isn't, return a bad status
-		//If there is at least one valid value
-		} else {
-			//Brute force until we get a choice that's not -1.
-			do{
-				move = choose.nextInt(okMoves.length);
-			} while(okMoves[move] == -1);
-			return okMoves[move]; //Return the valid move
-		}
-	}
-        public boolean isFree(int move){
-		String[] tempboard = board;
-		//If the space is empty, return true
-		if(null==tempboard[move]){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
+
 
     @Override
     public String test() {

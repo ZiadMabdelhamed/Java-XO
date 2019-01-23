@@ -73,7 +73,7 @@ public class Server extends Thread
                                         ///Socket s2 = gamep.accept ();
 					//new ChatHandler(s);
                                         //new GameHandler(s1,s2);
-                                        new GameHandler(s1);
+                                        new GameHandler(s1,s2);
                                         //new GameHandler2(s1,s2);
 				}
 		}

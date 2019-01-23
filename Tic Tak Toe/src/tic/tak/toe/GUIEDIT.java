@@ -99,9 +99,9 @@ public class GUIEDIT extends GUI{
         return net_socket;
     }
     
-    public void show_hide_request_msg()
+    public void show_hide_request_msg(boolean show)
     {
-        pane2.setVisible(true);
+        pane2.setVisible(show);
     }
     
     public void refresh_list(EventHandler<ActionEvent> eventHandler) throws IOException, ClassNotFoundException
@@ -118,8 +118,8 @@ public class GUIEDIT extends GUI{
         ArrayList<String[]> myList = null;
         try
             {//InetAddress.getLocalHost()
-                    Socket mySocket = new Socket("172.16.0.150", 5009);
-                    //Socket mySocket = new Socket(InetAddress.getLocalHost(), 5009);
+                    //Socket mySocket = new Socket("172.16.0.150", 5009);
+                    Socket mySocket = new Socket(InetAddress.getLocalHost(), 5009);
                     //net_socket = new Socket(InetAddress.getLocalHost(), 5007);
                     
                     /// send object 
